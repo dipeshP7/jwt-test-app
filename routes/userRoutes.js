@@ -1,7 +1,16 @@
 import express from "express";
 import UserController from "../controllers/userController.js";
+import checkUserAuth from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
+
+/**
+ * this routes will verify
+ * if valid token or not
+ * to protected routes
+ */
+//route middlewares to validate token
+router.use("/changepassword", checkUserAuth);
 
 //public Routes
 
@@ -22,5 +31,11 @@ router.post("/register", UserController.userRegistration);
 router.get("/signin", UserController.userLogin);
 
 //protected Routes
+/**
+ * this routes will use to
+ * change password of user
+ * after login
+ */
+router.post("/changepassword", UserController.userChangePassword);
 
 export default router;
