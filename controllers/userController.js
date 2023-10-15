@@ -239,6 +239,16 @@ class UserController {
       });
     }
   };
+
+  /**
+   * This method will get user details
+   * after succesful jwt validation
+   * @param {*} req
+   * @param {*} res
+   */
+  static loggedUser = async (req, res) => {
+    res.send({ user: req.user });
+  };
 }
 
 export default UserController;
